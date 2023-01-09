@@ -10,6 +10,7 @@ const port = process.env.PORT || 3004;
 const configuration = new Configuration({
   apiKey: process.env.OPENAPI_KEY,
 });
+
 const openai = new OpenAIApi(configuration);
 
 // Body parsing Middleware
