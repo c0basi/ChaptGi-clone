@@ -76,30 +76,30 @@ const handleSubmit = async (e: Event) => {
   // messageDiv.innerHTML = "..."
   messageDiv && loader(messageDiv);
 
-  // const response = await fetch("https://codex-im0y.onrender.com/", {
-  //   method: "POST",
-  //   headers: {
-  //     "Content-Type": "application/json",
-  //   },
-  //   body: JSON.stringify({
-  //     prompt: data.get("prompt"),
-  //   }),
-  // });
+  const response = await fetch("http://localhost:3004/", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      prompt: data.get("prompt"),
+    }),
+  });
 
-  // clearInterval(loadInterval);
-  // messageDiv ? (messageDiv.innerHTML = " ") : null;
+  clearInterval(loadInterval);
+  messageDiv ? (messageDiv.innerHTML = " ") : null;
 
-  // if (response.ok) {
-  //   const data = await response.json();
-  //   const parsedData = data.bot.trim(); // trims any trailing spaces/'\n'
+  if (response.ok) {
+    const data = await response.json();
+    const parsedData = data.bot.trim(); // trims any trailing spaces/'\n'
 
-  //   typeText(messageDiv!, parsedData);
-  // } else {
-  //   const err = await response.text();
+    typeText(messageDiv!, parsedData);
+  } else {
+    const err = await response.text();
 
-  //   messageDiv!.innerHTML = "Something went wrong";
-  //   alert(err);
-  // }
+    messageDiv!.innerHTML = "Something went wrong";
+    alert(err);
+  }
 };
 
 form.addEventListener("submit", handleSubmit);
