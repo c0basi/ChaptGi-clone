@@ -76,7 +76,7 @@ const handleSubmit = async (e: Event) => {
   // messageDiv.innerHTML = "..."
   messageDiv && loader(messageDiv);
 
-  const response = await fetch("http://localhost:3004/", {
+  const response = await fetch("https://codex-ai-3p07.onrender.com/", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
